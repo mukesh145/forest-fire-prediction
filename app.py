@@ -4,8 +4,11 @@ import pickle
 import numpy as np
 import os
 from dotenv import load_dotenv
+import datetime
 
 load_dotenv()
+now = datetime.datetime.now()
+
 
 with open("model.pkl", "rb") as file:
     model = pickle.load(file)
@@ -32,7 +35,7 @@ def fetch_weather_data():
     wind_speed = data['current']['wind_speed']
     precipitation = data['current']['precip']
 
-    details = [temperature,humidity,wind_speed,precipitation]
+    details = [now.month-1,temperature,humidity,wind_speed,precipitation]
 
     return details
 
